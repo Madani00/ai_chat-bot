@@ -1,0 +1,140 @@
+:root {
+    --background-color: #131313;
+    --container-width: 45%;
+    --max-container-width: 1000px;
+    --font-family: "Poppins", sans-serif;
+    --h1-size: 40px;
+    --auto-center: 0 auto;
+    --h2-color: #cbc4c4;
+}
+
+* {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    background: var(--background-color);
+}
+
+section {
+    height: 100vh;
+}
+
+section .container {
+    width: var(--container-width);
+    margin: var(--auto-center);
+    max-width: var(--max-container-width);
+}
+
+section .header {
+    padding-top: 60px;
+}
+
+section .header h1 {
+    width: fit-content;
+    font-size: var(--h1-size);
+    background: linear-gradient(to right, #3e81ec, #cb5e69);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: var(--auto-center) 100px;
+}
+
+section .header h2 {
+    font-size: 45px;
+    color: var(--h2-color);
+}
+
+.searching {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searching .wrapper {
+    width: var(--container-width);
+    max-width: var(--max-container-width);
+    position: relative;
+}
+
+.searching .wrapper input {
+    width: 100%;
+    height: 100%;
+    padding: 16px 45px 16px 20px;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    color:#e3e3e3 ;
+    border-radius: 30px;
+    background: #262728;
+    transition: 0.3s ease;
+}
+
+.searching .wrapper button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none;
+    outline: none;
+    font-size: 25px;
+    color: #e3e3e3;
+    border: none;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.searching .wrapper input:focus {
+    background: #424242;
+}
+
+.searching .wrapper input:valid ~ button {
+    opacity: 1;
+}
+
+.chat {
+    margin-top: 80px;
+    height: auto;
+    padding-bottom: 120px;
+}
+
+.chat .message {
+    margin-bottom: 35px;
+}
+
+.chat .message_list {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.chat .message_list img {
+    align-self: flex-start;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.chat .message_list .text {
+    color: #e3e3e3;
+}
+
+.chat .message span {
+    color: #424242;
+    cursor: pointer;
+    margin-top: 6px;
+    margin-left: 50px;
+    font-size: 30%;
+}
+
+.chat .message:hover span {
+    color: aliceblue;
+}
