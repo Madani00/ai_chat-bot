@@ -125,6 +125,7 @@ section .header h2 {
 
 .chat_list .message_list .text {
     color: #e3e3e3;
+    white-space: pre-wrap; 
 }
 
 .chat_list .message span {
@@ -141,9 +142,13 @@ section .header h2 {
 
 .chat_list .message .loading {
     width: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 6px;
+}
+
+.chat_list .message.loading .loading {
+    display: flex;
 }
 
 .chat_list .message .loading .loading_sec {
