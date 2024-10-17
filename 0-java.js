@@ -11,7 +11,7 @@ let userMsg = null;
 // await ensures the words are typed sequentially, one after the other.
 // The while loop continues until all the words are typed.
 const typingDecoration = async (text, classText) => {
-    const words = text.split(" ");
+    const words = text.split(' ');
     let wordIndex = 0;
   
     // Helper function to simulate typing effect
@@ -20,7 +20,7 @@ const typingDecoration = async (text, classText) => {
         setTimeout(() => {
           classText.innerHTML += (wordIndex === 0 ? '' : ' ') + word;
           resolve();
-        }, 60); // Adjust typing speed here
+        }, 75); // Adjust typing speed here
       });
     };
     
@@ -53,12 +53,15 @@ const apiResponse = async (div) => {
 
         const data = await resp.json();
         // The optional chaining (?.) ensures it won't throw an error if something is undefined.
-        const apiResp = data?.candidates?.[0]?.content?.parts?.[0]?.text.replace(/\*\*(.*?)\*\*/g, '$1');
+        // const apiResp = data?.candidates?.[0]?.content?.parts?.[0]?.text.replace(/\*\*(.*?)\*\*/g, '$1');
+        const apiResp = data?.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1');
         if (apiResp) {
-            console.log(apiResp);
+            console.log("API response:", apiResp);
+            console.log("API response:", "hi");
         } else {
             console.error("The response structure is not as expected", data);
         }
+        
         typingDecoration(apiResp, classText)
         // classText.innerHTML = apiResp;
 
@@ -81,11 +84,11 @@ const copyMessage = (copy_button) => {
 const isLoading = () => {
     const html = `
                     <div class="message_list">
-                        <img src="imgs/gemini.svg" alt="">
+                        <img class="gemini-icon" src="imgs/gemini.svg" alt="">
                         <p class="text">
                     
                         </p>
-                        <div class="loading">
+                        <div class="loading_ind">
                             <div class="loading_sec"></div>
                             <div class="loading_sec"></div>
                             <div class="loading_sec"></div>
@@ -131,6 +134,6 @@ searching.addEventListener("submit" , (event) => {
     
 
     // run the function after 60s
-    setTimeout(isLoading, 500)
+    setTimeout(isLoading, 1000)
 
 })
