@@ -31,6 +31,7 @@ section .container {
 
 section .header {
     padding-top: 60px;
+    /* display: none; */
 }
 
 section .header h1 {
@@ -104,18 +105,12 @@ section .header h2 {
     font-size: 25px;
     color: #e3e3e3;
     border: none;
-    opacity: 0;
-    transition: 0.4s;
 }
 
 .searching .wrapper button:hover {
     background-color: #4f4e4e;
     border-radius: 50%;
     font-size: 28px;
-}
-
-.searching .wrapper input:valid ~ button{
-    opacity: 1;
 }
 
 .searching .wrapper input:focus {
@@ -165,7 +160,12 @@ section .header h2 {
     cursor: pointer;
     margin-top: 6px;
     margin-left: 50px;
-    font-size: 25px;
+    font-size: 22px;
+    visibility: hidden;
+}
+
+.chat_list .message:hover span {
+    visibility: visible;
 }
 
 .chat_list .message:hover span {
