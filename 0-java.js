@@ -120,7 +120,7 @@ searching.addEventListener("submit" , (event) => {
     // if there is an input
     const html = `
                     <div class="message_list">
-                        <img src="" alt="" id="loggedUserPicture">
+                        <img src="imgs/default_picture.jpg" alt="" id="loggedUserPicture">
                         <p class="text"></p>
                     </div>
     `

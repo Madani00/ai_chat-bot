@@ -47,7 +47,7 @@ section .header h2 {
     color: var(--h2-color);
 }
 
-.searching {
+/* .searching {
     position: fixed;
     height: 100px;
     bottom: 0;
@@ -56,6 +56,27 @@ section .header h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+} */
+
+.type_form {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--background-color);
+}
+
+.type_form .searching , p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type_form p {
+    margin-top: 9px;
+    color: var(--h2-color);
+    font-size: 13px;
 }
 
 .searching .wrapper {
@@ -68,6 +89,7 @@ section .header h2 {
     width: 100%;
     height: 100%;
     padding: 16px 45px 16px 20px;
+    margin-top: 11px;
     outline: none;
     border: none;
     font-size: 15px;
@@ -82,6 +104,7 @@ section .header h2 {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    margin-top: 6px;
     cursor: pointer;
     background: none;
     outline: none;
@@ -90,6 +113,12 @@ section .header h2 {
     border: none;
     opacity: 0;
     transition: 0.4s;
+}
+
+.searching .wrapper button:hover {
+    background-color: #f0f0f0;
+    color: #333;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);    
 }
 
 .searching .wrapper input:valid ~ button{
