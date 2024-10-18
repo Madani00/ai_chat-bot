@@ -40,23 +40,16 @@ section .header h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: var(--auto-center) 100px;
+    /* added this  */
+    margin-top: 40px;
 }
 
 section .header h2 {
-    font-size: 45px;
+    font-size: 40px;
     color: var(--h2-color);
+    display: grid;
+    place-items: center;
 }
-
-/* .searching {
-    position: fixed;
-    height: 100px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 
 .type_form {
     position: fixed;
