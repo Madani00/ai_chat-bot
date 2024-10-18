@@ -81,10 +81,11 @@ signIn.addEventListener('click', (event)=>{
    const password=document.getElementById('password').value;
    const auth=getAuth();
 
-   signInWithEmailAndPassword(auth, email,password)
+   signInWithEmailAndPassword(auth, email, password)
    .then((userCredential)=>{
        showMessage('login is successful', 'signInMessage');
        const user=userCredential.user;
+       // if you go to Application console you will see
        localStorage.setItem('loggedInUserId', user.uid);
        window.location.href='0-index.html';
    })

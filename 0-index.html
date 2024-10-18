@@ -7,16 +7,22 @@
     
     <link rel="shortcut icon" href="imgs/gemini.svg">
     <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="1-home_auth.js"></script>
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=content_copy" /> -->
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <button class="logout" id="logout">Logout</button>
+        </nav>
+      </header>
     <section>
         <div class="container">
             <div class="header">
-                <h1>Hello, there.</h1>
+                <h1>Hello, <span id="loggedUserFName"></span></h1>
                 <h2>How can I help?</h2>
             </div>
+
 
             <div class="chat_list">
             </div>
@@ -30,8 +36,7 @@
                 </div>
             </form>
             <!-- <p class="disclaimer">
-                    Gemini may display inaccurate info, including about people, so double-check its responses.
-                    Your privacy and Gemini Apps
+                    Gemini can make mistakes, so double-check it
             </p> -->
 
         </div>

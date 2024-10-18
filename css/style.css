@@ -181,3 +181,32 @@ section .header h2 {
         background-position: 850px 0;
     }
 }
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  
+  nav {
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+  
+  nav button {
+    text-decoration: none;
+    color: #000000; /* Adjust text color as needed */
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: var(--h2-color);
+    border: 1px solid #cccccc;
+  }
+  
+  nav button:hover {
+    background-color: #5f5d5d;
+  }
