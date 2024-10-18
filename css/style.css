@@ -109,9 +109,9 @@ section .header h2 {
 }
 
 .searching .wrapper button:hover {
-    background-color: #f0f0f0;
-    color: #333;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);    
+    background-color: #4f4e4e;
+    border-radius: 50%;
+    font-size: 28px;
 }
 
 .searching .wrapper input:valid ~ button{
