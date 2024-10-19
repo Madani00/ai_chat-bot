@@ -7,27 +7,19 @@ const searching = document.querySelector(".searching")
 const chat_list = document.querySelector(".chat_list")
 let userMsg = null;
 
-
-// The typeWord function returns a Promise that resolves after setTimeout.
-// await ensures the words are typed sequentially, one after the other.
-// The while loop continues until all the words are typed.
-// text: The text to be typed.
-// classText: A reference to the HTML element where the typed text will be displayed.
 const typingDecoration = async (text, classText) => {
     const words = text.split(' ');
     let wordIndex = 0;
   
-    // Helper function to simulate typing effect
     const typeWord = (word) => {
       return new Promise((resolve) => {
         setTimeout(() => {
           classText.innerText += (wordIndex === 0 ? '' : ' ') + word;
           resolve();
-        }, 75); // Adjust typing speed here
+        }, 75);
       });
     };
     
-    // Loop over words and type them one by one
     while (wordIndex < words.length) {
       await typeWord(words[wordIndex]);
       wordIndex++;
@@ -35,7 +27,6 @@ const typingDecoration = async (text, classText) => {
     }
   };
 
-  // 3 third : getting data from api
 const apiResponse = async (div) => {
     const classText = div.querySelector(".text");
 
@@ -47,8 +38,6 @@ const apiResponse = async (div) => {
             }]
         });
 
-        // console.log("Request Body:", requestBody); 
-
         const resp = await fetch(API_URL, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -56,8 +45,7 @@ const apiResponse = async (div) => {
         });
 
         const data = await resp.json();
-        // The optional chaining (?.) ensures it won't throw an error if something is undefined.
-        // const apiResp = data?.candidates?.[0]?.content?.parts?.[0]?.text.replace(/\*\*(.*?)\*\*/g, '$1');
+
         const apiResp = data?.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1');
         if (apiResp) {
             console.log("API response:", apiResp);
@@ -66,7 +54,6 @@ const apiResponse = async (div) => {
         }
         
         typingDecoration(apiResp, classText)
-        // classText.innerHTML = apiResp;
 
     } catch(error) {
         console.log(error);
@@ -77,14 +64,13 @@ const apiResponse = async (div) => {
 }
 
 const copyMessage = (copy_button) => {
-    const msgText = copy_button.parentElement.querySelector(".text").innerText  // innerText Retrieves the text content.
+    const msgText = copy_button.parentElement.querySelector(".text").innerText  
 
-    navigator.clipboard.writeText(msgText) //  Copies the text to the clipboard.
+    navigator.clipboard.writeText(msgText) 
     copy_button.innerHTML = "Done"
     setTimeout(() => copy_button.innerHTML = "content_copy", 2000)
 }
 
-// 2 second
 const isLoading = () => {
     const html = `
                     <div class="message_list">
@@ -108,20 +94,17 @@ const isLoading = () => {
     div.innerHTML =  html    
     chat_list.appendChild(div)
     window.scrollTo(0, chat_list.scrollHeight)
-    apiResponse(div);   // div is important to get the apiresp in the animation 
+    apiResponse(div); 
 }
 
-// 1 first
 searching.addEventListener("submit" , (event) => {
     event.preventDefault();
 
     userMsg = document.querySelector(".inputtt").value;
-    // console.log(userMessage);
 
     // if there is no input
     if (!userMsg) return;
 
-    // if there is an input
     const html = `
                     <div class="message_list">
                         <img src="imgs/default_picture.jpg" alt="" id="loggedUserPicture">
@@ -129,17 +112,15 @@ searching.addEventListener("submit" , (event) => {
                     </div>
     `
 
-    const div = document.createElement("div");   // creates a new <div> element in the DOM.
-    div.classList.add("message", "outgoing");     // adds two classes, "message" and "outgoing", to the newly created <div>
-    div.innerHTML =  html       // Setting the inner HTML to the previos html variable
-    div.querySelector(".text").innerHTML = userMsg    // Replacing the message text to useMsg
-    // chat_list we called it above
+    const div = document.createElement("div");   
+    div.classList.add("message", "outgoing");   
+    div.innerHTML =  html  
+    div.querySelector(".text").innerHTML = userMsg  
+
     chat_list.appendChild(div)
-    searching.reset()     // to erase the message from searching
+    searching.reset() 
     window.scrollTo(0, chat_list.scrollHeight)
     
-
-    // run the function after 1s
     setTimeout(isLoading, 1000)
 
 })
