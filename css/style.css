@@ -140,19 +140,10 @@ section .header h2 {
     border-radius: 50%;
 }
 
-.chat_list .message_list .gemini-icon {
-    animation: rotate 1s linear infinite;
-}
-
-@keyframes rotate {
-    100% {
-        transform: rotate(180deg);
-    }
-}
 
 .chat_list .message_list .text {
     color: #e3e3e3;
-    /* white-space: pre-wrap; */
+    white-space: pre-wrap;
 }
 
 .chat_list .message span {
@@ -168,6 +159,11 @@ section .header h2 {
     visibility: visible;
 }
 
+.chat_list .message span:hover {
+    background-color: #4f4e4e;
+    border-radius: 50%;
+}
+
 .chat_list .message:hover span {
     color: aliceblue;
 }
@@ -178,7 +174,7 @@ section .header h2 {
     flex-direction: column;
     gap: 6px;
 }
-
+/* display the loading decoration only when .message takes the .loading class */
 .chat_list .message.loading .loading_ind {
     display: flex;
 }
