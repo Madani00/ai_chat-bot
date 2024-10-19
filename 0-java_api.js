@@ -11,6 +11,8 @@ let userMsg = null;
 // The typeWord function returns a Promise that resolves after setTimeout.
 // await ensures the words are typed sequentially, one after the other.
 // The while loop continues until all the words are typed.
+// text: The text to be typed.
+// classText: A reference to the HTML element where the typed text will be displayed.
 const typingDecoration = async (text, classText) => {
     const words = text.split(' ');
     let wordIndex = 0;
@@ -78,7 +80,7 @@ const copyMessage = (copy_button) => {
     const msgText = copy_button.parentElement.querySelector(".text").innerText  // innerText Retrieves the text content.
 
     navigator.clipboard.writeText(msgText) //  Copies the text to the clipboard.
-    copy_button.innerHTML = "Copied to clickboard"
+    copy_button.innerHTML = "Done"
     setTimeout(() => copy_button.innerHTML = "content_copy", 2000)
 }
 
@@ -105,7 +107,7 @@ const isLoading = () => {
     div.classList.add("message", "incoming", "loading");
     div.innerHTML =  html    
     chat_list.appendChild(div)
-
+    window.scrollTo(0, chat_list.scrollHeight)
     apiResponse(div);   // div is important to get the apiresp in the animation 
 }
 
@@ -134,6 +136,7 @@ searching.addEventListener("submit" , (event) => {
     // chat_list we called it above
     chat_list.appendChild(div)
     searching.reset()     // to erase the message from searching
+    window.scrollTo(0, chat_list.scrollHeight)
     
 
     // run the function after 1s
