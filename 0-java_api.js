@@ -11,27 +11,27 @@ let userMsg = null;
 // The typeWord function returns a Promise that resolves after setTimeout.
 // await ensures the words are typed sequentially, one after the other.
 // The while loop continues until all the words are typed.
-// const typingDecoration = async (text, classText) => {
-//     const words = text.split(' ');
-//     let wordIndex = 0;
+const typingDecoration = async (text, classText) => {
+    const words = text.split(' ');
+    let wordIndex = 0;
   
-//     // Helper function to simulate typing effect
-//     const typeWord = (word) => {
-//       return new Promise((resolve) => {
-//         setTimeout(() => {
-//           classText.innerHTML += (wordIndex === 0 ? '' : ' ') + word;
-//           resolve();
-//         }, 75); // Adjust typing speed here
-//       });
-//     };
+    // Helper function to simulate typing effect
+    const typeWord = (word) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          classText.innerText += (wordIndex === 0 ? '' : ' ') + word;
+          resolve();
+        }, 75); // Adjust typing speed here
+      });
+    };
     
-//     // Loop over words and type them one by one
-//     while (wordIndex < words.length) {
-//       await typeWord(words[wordIndex]);
-//       wordIndex++;
-//       window.scrollTo(0, chat_list.scrollHeight)
-//     }
-//   };
+    // Loop over words and type them one by one
+    while (wordIndex < words.length) {
+      await typeWord(words[wordIndex]);
+      wordIndex++;
+      window.scrollTo(0, chat_list.scrollHeight)
+    }
+  };
 
   // 3 third : getting data from api
 const apiResponse = async (div) => {
@@ -57,14 +57,14 @@ const apiResponse = async (div) => {
         // The optional chaining (?.) ensures it won't throw an error if something is undefined.
         // const apiResp = data?.candidates?.[0]?.content?.parts?.[0]?.text.replace(/\*\*(.*?)\*\*/g, '$1');
         const apiResp = data?.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1');
-        // if (apiResp) {
-        //     console.log("API response:", apiResp);
-        // } else {
-        //     console.error("The response structure is not as expected", data);
-        // }
+        if (apiResp) {
+            console.log("API response:", apiResp);
+        } else {
+            console.error("The response structure is not as expected", data);
+        }
         
-        // typingDecoration(apiResp, classText)
-        classText.innerHTML = apiResp;
+        typingDecoration(apiResp, classText)
+        // classText.innerHTML = apiResp;
 
     } catch(error) {
         console.log(error);
