@@ -2,9 +2,10 @@
 ---
 ## Project Overview:
 Hello everyone! Today, I'm excited to present my Gemini AI clone project. This project was inspired by the groundbreaking work done by Google AI, and I aimed to recreate some of the key functionalities and capabilities of their powerful language model.
-## Setup and Environment:
-To get started, I set up the project using GitHub repository, 
-Demonstrate the project's environment.
+## Getting Started
+- Open Visual Studio Code.
+- Locate and open the file `1-loginpage.html.`
+- Right-click the file and select **Open with Live Server** to launch the project in your browser.
 ## API Integration:
 One of the core components of this project was integrating with the Gemini AI API. I used the API to fetch data and interact with the language model. By establishing a connection to the API, I was able to access the powerful capabilities of the underlying model.
 ## Data Processing:
